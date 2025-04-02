@@ -8,15 +8,18 @@ const EditTodo = ({ todo }) => {
     e.preventDefault();
     try {
       const body = { description };
-      await fetch(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/todos/${todo.todo_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
 
       window.location = "/";
     } catch (err) {
-      console.error(err.message);
+      console.error("Edit error:", err.message);
     }
   };
 
