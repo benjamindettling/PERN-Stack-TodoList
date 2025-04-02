@@ -8,13 +8,20 @@ const ListTodos = () => {
   //delete todo function
   const deleteTodo = async (id) => {
     try {
-      await fetch(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/todos/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete todo");
+      }
 
       setTodos(todos.filter((todo) => todo.todo_id !== id));
     } catch (err) {
-      console.error(err.message);
+      console.error("Delete error:", err.message);
     }
   };
 
