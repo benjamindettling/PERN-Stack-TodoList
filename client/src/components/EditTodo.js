@@ -8,7 +8,7 @@ const EditTodo = ({ todo }) => {
     e.preventDefault();
     try {
       const body = { description };
-      await fetch(`${import.meta.env.VITE_API_BASE_URL}/todos`, {
+      await fetch(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

@@ -8,7 +8,7 @@ const ListTodos = () => {
   //delete todo function
   const deleteTodo = async (id) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_BASE_URL}/todos`, {
+      await fetch(`${process.env.REACT_APP_API_BASE_URL}/todos`, {
         method: "DELETE",
       });
 
@@ -21,7 +21,7 @@ const ListTodos = () => {
   const getTodos = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/todos`
+        `${process.env.REACT_APP_API_BASE_URL}/todos`
       );
       const jsonData = await response.json();
 
@@ -37,7 +37,7 @@ const ListTodos = () => {
 
   return (
     <Fragment>
-      <table class="table mt-5 text-center">
+      <table className="table mt-5 text-center">
         <thead>
           <tr>
             <th>Description</th>
